@@ -7,7 +7,8 @@ class Contact{
   String imageurl;
   String phone;
   String whatsapp;
+  String fathername;
 
-  Contact({this.name,this.address,this.bloodgrp,this.email,this.imageurl,this.phone,this.whatsapp});
+  Contact({this.name,this.address,this.bloodgrp,this.email,this.imageurl,this.phone,this.whatsapp, this.fathername});
 }
 

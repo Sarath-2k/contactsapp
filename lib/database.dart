@@ -14,7 +14,8 @@ class DatabaseService {
             bloodgrp: e.data['bloodgrp'],
             phone: e.data['phone'],
             whatsapp: e.data['whatsapp'],
-            imageurl: e.data['imageurl']))
+            imageurl: e.data['imageurl'],
+            fathername: e.data['fathername']))
         .toList();
   }
 

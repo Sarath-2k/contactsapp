@@ -29,7 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 elevation: 2,
                 child: ListTile(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ContactDetails(contactssnap[index])));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ContactDetails(contactssnap[index])));
                   },
                   leading: CircleAvatar(
                     radius: 20,
@@ -39,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             "https://pbs.twimg.com/profile_images/1110319067280269312/iEqpsbUA_400x400.png"),
                   ),
                   title: Text(contactssnap[index].name),
-                  subtitle: Text(contactssnap[index].phone == null ? "" : contactssnap[index].phone),
+                  subtitle: Text(contactssnap[index].fathername ?? ""),
                 ),
               ),
             );
