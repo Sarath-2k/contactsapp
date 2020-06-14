@@ -67,7 +67,10 @@ class _ContactDetailsState extends State<ContactDetails> {
                   padding: const EdgeInsets.only(left: 4, top: 12),
                   child: ListTile(
                     leading: Icon(Icons.person),
-                    title: Text(widget.contact.fathername),
+                    title: Text(
+                      widget.contact.fathername,
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),
@@ -112,7 +115,10 @@ class _ContactDetailsState extends State<ContactDetails> {
                   padding: const EdgeInsets.only(left: 4),
                   child: ListTile(
                     leading: Icon(Icons.home),
-                    title: Text(widget.contact.address),
+                    title: Text(
+                      widget.contact.address,
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),
@@ -125,14 +131,17 @@ class _ContactDetailsState extends State<ContactDetails> {
                       Icons.album,
                       color: Colors.red,
                     ),
-                    title: Text(widget.contact.bloodgrp),
+                    title: Text(
+                      widget.contact.bloodgrp,
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),
               Visibility(
                 visible: widget.contact.whatsapp != "",
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.only(left: 2),
                   child: FlatButton(
                       child: Container(
                         height: 40,
