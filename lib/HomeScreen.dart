@@ -17,9 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Contact> tempList = List<Contact>();
   copyListData(List<Contact> copiedData) {
     tempList.clear();
-    filteredList.clear();
     tempList.addAll(copiedData);
-    filteredList.addAll(tempList);
   }
 
   void filterSearch(String query) {
@@ -29,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (query.isNotEmpty) {
       List<Contact> tempListWithData = List<Contact>();
       dummySearchList.forEach((element) {
-        if (element.name.contains(query)) {
+        if (element.name.toLowerCase().contains(query)) {
           tempListWithData.add(element);
         }
       });
@@ -63,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(12.0),
               child: TextField(
                 onChanged: (value) {
-                  filterSearch(value);
+                  filterSearch(value.toLowerCase());
                 },
                 controller: editingController,
                 decoration: InputDecoration(
