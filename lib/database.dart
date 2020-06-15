@@ -4,6 +4,7 @@ import './contact.dart';
 class DatabaseService {
   final CollectionReference contactCollection =
       Firestore.instance.collection('contacts');
+  final Query dat=Firestore.instance.collection('contacts').orderBy('name');
 
   List<Contact> _contactListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents
@@ -20,6 +21,7 @@ class DatabaseService {
   }
 
   Stream<List<Contact>> get contactssnap {
-    return contactCollection.snapshots().map(_contactListFromSnapshot);
+    //return contactCollection.snapshots().map(_contactListFromSnapshot);
+    return dat.snapshots().map(_contactListFromSnapshot);
   }
 }
