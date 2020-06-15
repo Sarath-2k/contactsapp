@@ -86,6 +86,23 @@ class _ContactDetailsState extends State<ContactDetails> {
                         widget.contact.phone,
                         style: TextStyle(fontSize: 18),
                       )),
+                      Visibility(
+                        visible: widget.contact.whatsapp != "",
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 12.0),
+                          child: InkWell(
+                            onTap: _whatsappURL,
+                            child: Container(
+                              height: 32,
+                              width: 32,
+                              child: Image(
+                                image: AssetImage("images/WhatsApp.png"),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       IconButton(icon: Icon(Icons.message), onPressed: _smsURL),
                       IconButton(icon: Icon(Icons.phone), onPressed: _phoneURL),
                     ],
@@ -136,22 +153,6 @@ class _ContactDetailsState extends State<ContactDetails> {
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
-                ),
-              ),
-              Visibility(
-                visible: widget.contact.whatsapp != "",
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: FlatButton(
-                      child: Container(
-                        height: 40,
-                        width: 140,
-                        child: Image.network(
-                          "https://www.nicepng.com/png/full/3-37143_transparent-svg-vector-freebie-whatsapp.png",
-                          fit: BoxFit.scaleDown,
-                        ),
-                      ),
-                      onPressed: _whatsappURL),
                 ),
               ),
             ]),
