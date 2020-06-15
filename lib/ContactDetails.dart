@@ -48,7 +48,9 @@ class _ContactDetailsState extends State<ContactDetails> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     CircleAvatar(
-                      backgroundImage: NetworkImage(widget.contact.imageurl),
+                      backgroundImage: widget.contact.imageurl != ""
+                          ? NetworkImage(widget.contact.imageurl)
+                          : AssetImage("images/profile.jpg"),
                       radius: 80,
                     ),
                   ],

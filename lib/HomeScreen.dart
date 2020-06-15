@@ -37,10 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   leading: CircleAvatar(
                     radius: 20,
-                    backgroundImage: contactssnap[index].imageurl != null
-                        ? NetworkImage(contactssnap[index].imageurl)
-                        : NetworkImage(
-                            "https://pbs.twimg.com/profile_images/1110319067280269312/iEqpsbUA_400x400.png"),
+                    backgroundImage: contactssnap[index].imageurl != ""
+                          ? NetworkImage(contactssnap[index].imageurl)
+                          : AssetImage("images/profile.jpg"),
                   ),
                   title: Text(contactssnap[index].name),
                   subtitle: Text(contactssnap[index].fathername ?? ""),
