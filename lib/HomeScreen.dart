@@ -57,49 +57,60 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: TextField(
-                onChanged: (value) {
-                  filterSearch(value.toLowerCase());
-                },
-                controller: editingController,
-                decoration: InputDecoration(
-                    labelText: "Search",
-                    hintText: "Search",
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+            Container(
+              height: 72,
+              margin: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 4),
+              child: Material(
+                elevation: 8,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      bottom: 12, left: 12, right: 12, top: 12),
+                  child: TextField(
+                    onChanged: (value) {
+                      filterSearch(value.toLowerCase());
+                    },
+                    controller: editingController,
+                    decoration: InputDecoration(
+                        labelText: "Search",
+                        hintText: "Search",
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(25.0)))),
+                  ),
+                ),
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Material(
-                    elevation: 2,
-                    child: ListTile(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ContactDetails(filteredList[index])));
-                      },
-                      leading: CircleAvatar(
-                        radius: 20,
-                        backgroundImage: filteredList[index].imageurl != ""
-                            ? NetworkImage(filteredList[index].imageurl)
-                            : AssetImage("images/profile.jpg"),
+            Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Material(
+                      elevation: 2,
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ContactDetails(filteredList[index])));
+                        },
+                        leading: CircleAvatar(
+                          radius: 20,
+                          backgroundImage: filteredList[index].imageurl != ""
+                              ? NetworkImage(filteredList[index].imageurl)
+                              : AssetImage("images/profile.jpg"),
+                        ),
+                        title: Text(filteredList[index].name),
+                        subtitle: Text(filteredList[index].fathername ?? ""),
                       ),
-                      title: Text(filteredList[index].name),
-                      subtitle: Text(filteredList[index].fathername ?? ""),
                     ),
-                  ),
-                );
-              },
-              itemCount: filteredList.length,
+                  );
+                },
+                itemCount: filteredList.length,
+              ),
             ),
           ],
         ),
