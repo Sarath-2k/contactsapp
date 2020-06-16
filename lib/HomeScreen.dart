@@ -49,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final contactssnap = Provider.of<List<Contact>>(context) ?? [];
     copyListData(contactssnap);
-    
-    if (flag == 0  && contactssnap.isNotEmpty) {
+
+    if (flag == 0 && contactssnap.isNotEmpty) {
       filteredList.addAll(contactssnap);
       flag = 1;
     }
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     controller: editingController,
                     decoration: InputDecoration(
                         labelText: "Search",
-                        hintText: "Search",
+                        //hintText: "Search",
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
                             borderRadius:
@@ -87,37 +87,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Material(
-                      elevation: 2,
-                      child: ListTile(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ContactDetails(filteredList[index])));
-                        },
-                        leading: CircleAvatar(
-                          radius: 20,
-                          backgroundImage: filteredList[index].imageurl != ""
-                              ? NetworkImage(filteredList[index].imageurl)
-                              : AssetImage("images/profile.jpg"),
-                        ),
-                        title: Text(filteredList[index].name),
-                        subtitle: Text(filteredList[index].fathername ?? ""),
-                      ),
+            filteredList.isEmpty
+                ? Padding(
+                    padding:
+                        const EdgeInsets.only(top: 100, left: 28, right: 28),
+                    child: Image(image: AssetImage("images/emptyList.png")),
+                  )
+                : Flexible(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Material(
+                            elevation: 2,
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ContactDetails(
+                                            filteredList[index])));
+                              },
+                              leading: CircleAvatar(
+                                radius: 20,
+                                backgroundImage: filteredList[index].imageurl !=
+                                        ""
+                                    ? NetworkImage(filteredList[index].imageurl)
+                                    : AssetImage("images/profile.jpg"),
+                              ),
+                              title: Text(filteredList[index].name),
+                              subtitle:
+                                  Text(filteredList[index].fathername ?? ""),
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: filteredList.length,
                     ),
-                  );
-                },
-                itemCount: filteredList.length,
-              ),
-            ),
+                  ),
           ],
         ),
       ),
