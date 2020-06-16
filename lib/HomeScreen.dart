@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController editingController = TextEditingController();
   final List<Contact> filteredList = List<Contact>();
+  int flag = 0;
 
   List<Contact> tempList = List<Contact>();
   copyListData(List<Contact> copiedData) {
@@ -48,6 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final contactssnap = Provider.of<List<Contact>>(context) ?? [];
     copyListData(contactssnap);
+    
+    if (flag == 0  && contactssnap.isNotEmpty) {
+      filteredList.addAll(contactssnap);
+      flag = 1;
+    }
 
     return StreamProvider<List<Contact>>.value(
       value: DatabaseService().contactssnap,
