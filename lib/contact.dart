@@ -1,5 +1,4 @@
-
-class Contact{
+class Contact {
   String name;
   String address;
   String bloodgrp;
@@ -8,7 +7,24 @@ class Contact{
   String phone;
   String whatsapp;
   String fathername;
+  String dob;
+  String dom;
+  String dod;
+  String secemail;
+  String secphone;
 
-  Contact({this.name,this.address,this.bloodgrp,this.email,this.imageurl,this.phone,this.whatsapp, this.fathername});
+  Contact(
+      {this.name,
+      this.address,
+      this.bloodgrp,
+      this.email,
+      this.imageurl,
+      this.phone,
+      this.whatsapp,
+      this.fathername,
+      this.dob,
+      this.dom,
+      this.dod,
+      this.secemail,
+      this.secphone});
 }
-
