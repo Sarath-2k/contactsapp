@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController editingController = TextEditingController();
   final List<Contact> filteredList = List<Contact>();
   int flag = 0;
+  bool search = false;
 
   List<Contact> tempList = List<Contact>();
   copyListData(List<Contact> copiedData) {
@@ -45,6 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  _toggleSearchState() {
+    setState(() {
+      search = !search;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final contactssnap = Provider.of<List<Contact>>(context) ?? [];
@@ -60,29 +67,35 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Center(child: Text("ContactsApp")),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.search), onPressed: _toggleSearchState)
+          ],
         ),
         body: Column(
           children: <Widget>[
-            Container(
-              height: 72,
-              margin: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 4),
-              child: Material(
-                elevation: 8,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      bottom: 12, left: 12, right: 12, top: 12),
-                  child: TextField(
-                    onChanged: (value) {
-                      filterSearch(value.toLowerCase());
-                    },
-                    controller: editingController,
-                    decoration: InputDecoration(
-                        labelText: "Search",
-                        //hintText: "Search",
-                        prefixIcon: Icon(Icons.search),
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(25.0)))),
+            Visibility(
+              visible: search,
+              child: Container(
+                height: 72,
+                margin: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 4),
+                child: Material(
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 12, left: 12, right: 12, top: 12),
+                    child: TextField(
+                      onChanged: (value) {
+                        filterSearch(value.toLowerCase());
+                      },
+                      controller: editingController,
+                      decoration: InputDecoration(
+                          labelText: "Search",
+                          //hintText: "Search",
+                          prefixIcon: Icon(Icons.search),
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25.0)))),
+                    ),
                   ),
                 ),
               ),
