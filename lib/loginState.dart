@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:contactsapp/HomeScreen.dart';
 import 'package:contactsapp/login.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +10,6 @@ class First extends StatefulWidget {
 
 class _FirstState extends State<First> {
   dynamic value;
-  //   // int valueTemp;
-  //   // final prefs = SharedPreferences.getInstance();
-  //   // final key = 'loginState';
-
 
   SharedPreferences sharedPreferences;
   @override
