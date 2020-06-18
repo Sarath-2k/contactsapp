@@ -17,9 +17,12 @@ Widget visibilityText(String key, String value) {
       padding: const EdgeInsets.only(left: 4),
       child: ListTile(
         leading: Text(key),
-        title: Text(
-          value,
-          style: TextStyle(fontSize: 16),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Text(
+            value,
+            style: TextStyle(fontSize: 16),
+          ),
         ),
       ),
     ),
@@ -85,7 +88,6 @@ class _ContactDetailsState extends State<ContactDetails> {
 
   @override
   Widget build(BuildContext context) {
-
     String name = widget.contact.name ?? "";
     String address = widget.contact.address ?? "";
     String phone = widget.contact.phone ?? "";
@@ -99,7 +101,6 @@ class _ContactDetailsState extends State<ContactDetails> {
     String fathername = widget.contact.fathername ?? "";
     String imageurl = widget.contact.imageurl ?? "";
     String whatsapp = widget.contact.whatsapp ?? "";
-
 
     return Scaffold(
       appBar: AppBar(
