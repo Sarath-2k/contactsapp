@@ -86,7 +86,20 @@ class _ContactDetailsState extends State<ContactDetails> {
   @override
   Widget build(BuildContext context) {
 
-    widget.contact.email ?? "osnu";
+    String name = widget.contact.name ?? "";
+    String address = widget.contact.address ?? "";
+    String phone = widget.contact.phone ?? "";
+    String secphone = widget.contact.secphone ?? "";
+    String email = widget.contact.email ?? "";
+    String secemail = widget.contact.secemail ?? "";
+    String dob = widget.contact.dob ?? "";
+    String dom = widget.contact.dom ?? "";
+    String dod = widget.contact.dod ?? "";
+    String bloodgrp = widget.contact.bloodgrp ?? "";
+    String fathername = widget.contact.fathername ?? "";
+    String imageurl = widget.contact.imageurl ?? "";
+    String whatsapp = widget.contact.whatsapp ?? "";
+
 
     return Scaffold(
       appBar: AppBar(
@@ -101,8 +114,8 @@ class _ContactDetailsState extends State<ContactDetails> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
-                  backgroundImage: widget.contact.imageurl != ""
-                      ? NetworkImage(widget.contact.imageurl)
+                  backgroundImage: imageurl != ""
+                      ? NetworkImage(imageurl)
                       : AssetImage("images/profile.jpg"),
                   radius: 80,
                 ),
@@ -112,37 +125,37 @@ class _ContactDetailsState extends State<ContactDetails> {
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
-              widget.contact.name,
+              name,
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
           ),
           Visibility(
-            visible: widget.contact.fathername != "",
+            visible: fathername != "",
             child: Padding(
               padding: const EdgeInsets.only(left: 4, top: 8),
               child: ListTile(
                 leading: Icon(Icons.person),
                 title: Text(
-                  widget.contact.fathername,
+                  fathername,
                   style: TextStyle(fontSize: 16),
                 ),
               ),
             ),
           ),
           Visibility(
-            visible: widget.contact.phone != "",
+            visible: phone != "",
             child: Padding(
-              padding: const EdgeInsets.only(left: 20, top: 0, right: 16),
+              padding: const EdgeInsets.only(left: 20, top: 4, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Expanded(
                       child: Text(
-                    widget.contact.phone,
+                    phone,
                     style: TextStyle(fontSize: 18),
                   )),
                   Visibility(
-                    visible: widget.contact.whatsapp != "",
+                    visible: whatsapp != "",
                     child: Padding(
                       padding: const EdgeInsets.only(right: 12.0),
                       child: InkWell(
@@ -165,7 +178,7 @@ class _ContactDetailsState extends State<ContactDetails> {
             ),
           ),
           Visibility(
-            visible: widget.contact.secphone != "",
+            visible: secphone != "",
             child: Padding(
               padding: const EdgeInsets.only(left: 20, top: 0, right: 16),
               child: Row(
@@ -173,7 +186,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                 children: <Widget>[
                   Expanded(
                       child: Text(
-                    widget.contact.secphone,
+                    secphone,
                     style: TextStyle(fontSize: 18),
                   )),
                   IconButton(icon: Icon(Icons.message), onPressed: _secsmsURL),
@@ -182,13 +195,13 @@ class _ContactDetailsState extends State<ContactDetails> {
               ),
             ),
           ),
-          emailTile(widget.contact.email, _emailURL),
-          emailTile(widget.contact.secemail, _secemailURL),
-          visibilityText("Address:", widget.contact.address),
-          visibilityText("Date of Birth:", widget.contact.dob),
-          visibilityText("Date of Marriage:", widget.contact.dom),
-          visibilityText("Date of Death:", widget.contact.dod),
-          visibilityText("Blood group:", widget.contact.bloodgrp),
+          emailTile(email, _emailURL),
+          emailTile(secemail, _secemailURL),
+          visibilityText("Address:", address),
+          visibilityText("Date of Birth:", dob),
+          visibilityText("Date of Marriage:", dom),
+          visibilityText("Date of Death:", dod),
+          visibilityText("Blood group:", bloodgrp),
         ]),
       ),
     );
