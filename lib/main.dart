@@ -1,6 +1,6 @@
+import 'package:contactsapp/loginState.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './HomeScreen.dart';
 import 'database.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider.value(
       value: DatabaseService().contactssnap,
       child: MaterialApp(
-        home: HomeScreen(),
+        home: First(),
         debugShowCheckedModeBanner: false,
       ),
     );
